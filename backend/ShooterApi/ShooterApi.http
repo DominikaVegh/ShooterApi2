@@ -1,0 +1,6 @@
+@ShooterApi_HostAddress = http://localhost:5261
+
+GET {{ShooterApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
