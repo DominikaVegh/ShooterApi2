@@ -1,132 +1,138 @@
-🏹 Shooter API – .NET + React Full-Stack Project
-📌 Project overview
+## Documentation
 
-This project is a full-stack learning application built with ASP.NET Core and React.
-The goal was to create a simple but well-structured system to manage sport shooters, including full CRUD functionality.
+### Project goal
 
-The backend provides a REST API, while the frontend is a separate React application consuming that API.
+The goal of this project is to create a simple but well-structured full-stack application
+for managing sport shooters.
+The system supports CRUD operations (Create, Read, Update, Delete) and demonstrates
+communication between a .NET backend and a React frontend.
 
-🧩 Features
-Backend (ASP.NET Core Web API)
+---
 
-.NET 10
+### System architecture
 
-RESTful API architecture
+The project consists of two separate parts.
 
-Entity Framework Core with InMemory database
+Backend – ASP.NET Core Web API  
+Technology: .NET 10  
+Data access: Entity Framework Core  
+Database: InMemory  
+Architecture: REST API (controller-based)  
+API documentation: Swagger UI  
 
-Full CRUD operations for shooters:
+The backend is responsible for storing and managing shooter data and providing REST endpoints.
 
-Create
+Frontend – React application  
+Technology: React  
+Language: TypeScript  
+Build tool: Vite  
+Styling: Tailwind CSS  
+HTTP client: Axios  
 
-Read (list & by ID)
+The frontend provides a user interface for managing sport shooters
+and communicates with the backend via HTTP requests.
 
-Update
+---
 
-Delete
+### Running the project
 
-Swagger UI for API documentation
+Backend startup
 
-CORS configured for React frontend
+Prerequisite: .NET SDK 10 installed
 
-Frontend (React)
+Command:
+cd ShooterApi/ShooterApi  
+dotnet run  
 
-Separate project created with Vite
-
-React + TypeScript
-
-Tailwind CSS for styling
-
-Axios for HTTP communication
-
-Shooter management:
-
-List shooters
-
-Add new shooter
-
-Edit existing shooter
-
-Delete shooter
-
-Responsive and clean UI
-
-🧍 Shooter model
-public class Shooter
-{
-    public int Id { get; set; }
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
-    public string Nationality { get; set; }
-    public DateTime DateOfBirth { get; set; }
-    public string Discipline { get; set; }
-}
-
-📂 Project structure
-ShooterApi/
-├── ShooterApi/              # ASP.NET Core Web API
-│   ├── Controllers/
-│   ├── Data/
-│   ├── Models/
-│   └── Program.cs
-│
-└── shooter-ui/              # React frontend
-    ├── src/
-    │   ├── api/
-    │   ├── models/
-    │   ├── pages/
-    │   └── App.tsx
-    └── package.json
-
-▶️ How to run the project
-1️⃣ Backend
-cd ShooterApi/ShooterApi
-dotnet run
-
-
-API runs on:
-👉 http://localhost:5261
+The API will be available at:
+http://localhost:5261
 
 Swagger UI:
-👉 http://localhost:5261/swagger
+http://localhost:5261/swagger
 
-2️⃣ Frontend
-cd shooter-ui
-npm install
-npm run dev
+---
 
+Frontend startup
 
-Frontend runs on:
-👉 http://localhost:5173
+Prerequisite: Node.js and npm installed
 
-🔗 API endpoints
-Method	Endpoint	Description
-GET	/api/shooters	Get all shooters
-GET	/api/shooters/{id}	Get shooter by ID
-POST	/api/shooters	Create new shooter
-PUT	/api/shooters/{id}	Update shooter
-DELETE	/api/shooters/{id}	Delete shooter
-🎯 Project goals
+Command:
+cd shooter-ui  
+npm install  
+npm run dev  
 
-Practice full-stack development
+The frontend will be available at:
+http://localhost:5173
 
-Understand frontend–backend communication
+---
 
-Apply clean code and best practices
+### Example API calls
 
-Use modern frontend tooling (React, TypeScript, Tailwind)
+Get all shooters  
+Method: GET  
+URL:
+http://localhost:5261/api/shooters
 
-Build a realistic CRUD application
+Example response:
+[
+  {
+    "id": 1,
+    "firstName": "Anna",
+    "lastName": "Kovacs",
+    "nationality": "HU",
+    "dateOfBirth": "1995-05-10T00:00:00",
+    "discipline": "Rifle"
+  }
+]
 
-📝 Notes
+---
 
-HTTPS was disabled in development to avoid certificate issues.
+Create a new shooter  
+Method: POST  
+URL:
+http://localhost:5261/api/shooters
 
-The database is InMemory, data is reset on backend restart.
+Request body:
+{
+  "firstName": "Peter",
+  "lastName": "Nagy",
+  "nationality": "HU",
+  "dateOfBirth": "1992-03-15",
+  "discipline": "Pistol"
+}
 
-This project focuses on learning and structure, not production readiness.
+---
 
-👩‍💻 Author
+Update a shooter  
+Method: PUT  
+URL:
+http://localhost:5261/api/shooters/1
 
-Dominika
-Learning project – .NET & React full-stack development
+Request body:
+{
+  "id": 1,
+  "firstName": "Peter",
+  "lastName": "Nagy",
+  "nationality": "HU",
+  "dateOfBirth": "1992-03-15",
+  "discipline": "Rifle"
+}
+
+---
+
+Delete a shooter  
+Method: DELETE  
+URL:
+http://localhost:5261/api/shooters/1
+
+---
+
+Notes
+
+The database is InMemory, therefore all data is lost when the backend is restarted.
+This project was created for learning purposes.
+HTTP is used in development to simplify configuration.
+
+---
+
+Created by: Dominika Vegh
